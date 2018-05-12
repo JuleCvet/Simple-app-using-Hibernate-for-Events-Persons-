@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<hibernate-mapping package="hibernatePersonsEvent.domain">
+
+    <class name="Person" table="person">
+        <id name="id" column="person_id">
+            <generator class="native"/>
+        </id>
+        <property name="age"/>
+        <property name="firstname"/>
+        <property name="lastname"/>
+        
+        <set name="events" table="person_event">
+	        <key column="person_id"/>
+	        <many-to-many column="event_id" class="Event"/>
+    	</set>
+    	<set name="emailAddresses" table="person_email_addr">
+            <key column="person_id"/>
+            <element type="string" column="email_addr"/>
+        </set>
+    	
+    </class>
+
+</hibernate-mapping>
